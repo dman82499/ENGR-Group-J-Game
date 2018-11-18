@@ -14,11 +14,16 @@ disp('When the player or the dealer reaches exactly 21 points, the game ends.')
 
 money = 10 
 
-player_name = input('What is your name?: ','s');
-fprintf('You have %4.0f MATLAB coins left', money)
-bet = input('\n[Dealer]: How many MATLAB coins would you want to bet? (please type a whole number):');
-money = money - bet;
-fprintf('you have %4.0f coins left',money)
+Player1 = input('What is your name?: ','s');
+
+Player1_total=0
+Dealer_total=0
+while Player1_total<21 & Dealer_total<21
+    bet = input('\n[Dealer]: How many MATLAB coins would you want to bet? (please type a positive integer):');
+    money = money - bet;
+    fprintf('you have %4.0f coins left',money)
+    ShuffledDeck=randperm(52)
+
 
 cards = [2,2,2,3,3,3,4,4,4,5,5,5,6,6,6]
 dealer_total = 0
@@ -28,10 +33,17 @@ player_total = 0
 fprintf('You have %f total, while the dealer has 
 input
 if dealer_total = 21
-    fprintf('The Delaer wins!')    
+fprintf('The Delaer wins!')    
 end
 
 if player_total = 21
-    fprintf('you win!')    
+    
+end
+
+function card_value = convert(Card)
+first = floor((Card/4)+1)
+remainder = Card % 4
+if remainder = 0
+    first - 1
 end
 end
