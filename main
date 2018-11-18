@@ -29,7 +29,7 @@ while new_game == 'yes'
         player_total = 0
         Player_Cards = ShuffledDeck(1,3)
         Dealer_Cards = ShuffledDeck(2,4)
-        imshow(Player_Cards)
+        imshow([BlueDeck{Player_Cards}])
         imshow(Dealer_Cards(1))
         %convert to card value
         fprintf('You have %3.0f total, while the dealer has %3.0f', playertotal, dealer total)
