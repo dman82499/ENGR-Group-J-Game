@@ -1,0 +1,44 @@
+Load CardDeck
+disp('Welcome to Blackjack! You are currently playing against the MATLAB dealer')
+disp('There is a dealer and a player')
+disp('There are 52 cards in the deck')
+disp('Aces may be counted as either 1 or 11 points')
+disp('Cards 2-10 are scored as their numerical value')
+disp('All face cards are counted as 10 points')
+disp('Value of a hand is the sum of the point values of the cards')
+disp('The goal of the game is to reach 21 points without exceeding 21') 
+disp('If you exceed 21 player loses and dealer wins') 
+disp('If you get 21 points across the first card, you win instantly unless the dealer also gets the same (called a blackjack)')
+disp('When the player or the dealer reaches exactly 21 points, the game ends.')
+
+
+money = 10 
+
+player_name = input('What is your name?: ','s');
+fprintf('You have %4.0f MATLAB coins left', money)
+bet = input('\n[Dealer]: How many MATLAB coins would you want to bet? (please type a whole number):');
+money = money - bet;
+fprintf('you have %4.0f coins left',money)
+
+cards = [2,2,2,3,3,3,4,4,4,5,5,5,6,6,6]
+dealer_total = 0
+player_total = 0
+%deal 2 cards to player_total
+%deal 2 cards to dealer_total
+fprintf('You have %f total, while the dealer has 
+input
+if dealer_total = 21
+fprintf('The Delaer wins!')    
+end
+
+if player_total = 21
+    
+end
+
+function card_value = convert(Card)
+first = floor((Card/4)+1)
+remainder = Card % 4
+if remainder = 0
+    first - 1
+end
+end
