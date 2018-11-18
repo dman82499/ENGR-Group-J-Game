@@ -28,17 +28,10 @@ player_total = 0
 fprintf('You have %f total, while the dealer has 
 input
 if dealer_total = 21
-fprintf('The Delaer wins!')    
+    fprintf('The Delaer wins!')    
 end
 
 if player_total = 21
-    
-end
-
-function card_value = convert(Card)
-first = floor((Card/4)+1)
-remainder = Card % 4
-if remainder = 0
-    first - 1
+    fprintf('you win!')    
 end
 end
