@@ -55,12 +55,29 @@ while new_game == 'yes'
             imshow([BlueDeck{Dealer_Cards}])            
             
     if dealer_total = 21
-        fprintf('The Delaer wins!')    
+        fprintf('The Dealer wins!')    
     end
         
-        if player_total = 21
+    if player_total = 21
+        fprintf('You Win!')
+    end
         
-        end
+    if player_total > 21
+        fprintf('The Dealer Wins!')
+    end
+        
+    if dealer_total > 21
+        fprintf('You Win!')
+    end
+        
+    if player_total > dealer_total
+        fprintf('You Win!')
+    end
+        
+    if dealer_total > player_total
+        fprintf('The Dealer Wins!')
+    end
+        
     new_game = input('Do you want to play again?',s)
 end
 end
