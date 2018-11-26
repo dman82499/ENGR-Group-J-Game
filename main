@@ -69,6 +69,10 @@ while new_game == 'yes'
     if dealer_total > 21
         fprintf('You Win!')
     end
+    
+    if dealer_total = player_total
+        fprintf('Draw!')
+    end
         
     if player_total > dealer_total
         fprintf('You Win!')
