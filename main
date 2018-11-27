@@ -17,7 +17,7 @@ money = 10
 Player1 = input('What is your name?: ','s');
 
 while new_game == 'yes'
-    bet = input('\n[Dealer]: How many MATLAB coins would you want to bet? (please type a positive integer):');
+    bet = input('\n[Dealer]: How many MATLAB coins would you want to bet? (please type a positive integer, greater than 0):');
     money = money - bet;
     fprintf('you have %4.0f coins left',money)
     dealer_total = 0
