@@ -4,6 +4,5 @@ remainder = mod(Card, 4)
 if remainder == 0
     first = first - 1
 end
-first
 card_value = first 
 end
