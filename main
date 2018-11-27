@@ -1,4 +1,4 @@
-Load CardDeck
+load CardDeck
 disp('Welcome to Blackjack! You are currently playing against the MATLAB dealer')
 disp('There is a dealer and a player')
 disp('There are 52 cards in the deck')
@@ -22,8 +22,9 @@ while new_game == 'yes'
     fprintf('you have %4.0f coins left',money)
     dealer_total = 0
     player_total = 0
-   
+
 %initilizing card variables
+
     ShuffledDeck=randperm(52)
     dealer_total = 0;
     player_total = 0;
@@ -32,13 +33,12 @@ while new_game == 'yes'
     Dealer_Cards = ShuffledDeck(2,4)
     imshow([BlueDeck{Player_Cards}])
     imshow([BlueDeck{Dealer_Cards}])
-    %convert to card value
-    fprintf('You have %3.0f total, while the dealer has %3.0f', playertotal, dealer total)
     
+    %convert to card value
+    fprintf('You have %3.0f total, while the dealer has %3.0f', player_total, dealer_total)
     while Player1_total<21 & Dealer_total<21      
         question = input('Would you like to hit or stay?(type h or s)',s);
-        
-        if question = 'h'
+      if question == 'h'
             Player_Cards = [Player_Cards], ShuffledDeck(next_face_up) 
             next_face_up = next_face_up + 1
             Dealer_Cards = [Dealer_cards], ShuffledDeck(next_face_up) 
@@ -48,40 +48,34 @@ while new_game == 'yes'
             %convert to card value
             fprintf('You have %3.0f total, while the dealer has %3.0f', playertotal, dealer_total)
         
-        if question = 's'
+      if question == 's'
         %while dealer_total is less than 17
-                Dealer_Cards = [Dealer_cards], ShuffledDeck(next_face_up)
-                next_face_up = next_face_up + 1
+            Dealer_Cards = [Dealer_cards], ShuffledDeck(next_face_up)
+            next_face_up = next_face_up + 1
             imshow([BlueDeck{Dealer_Cards}])            
-            
-      if dealer_total = 21
+      if dealer_total == 21
         fprintf('The Dealer wins!')    
       end
-        
-      if player_total = 21
+      if player_total == 21
         fprintf('You Win!')
       end
-        
       if player_total > 21
         fprintf('The Dealer Wins!')
       end
-        
       if dealer_total > 21
         fprintf('You Win!')
       end
-    
-      if dealer_total = player_total
+      if dealer_total == player_total
         fprintf('Draw!')
       end
-        
       if player_total > dealer_total
         fprintf('You Win!')
       end
-        
       if dealer_total > player_total
         fprintf('The Dealer Wins!')
-      end
-        
+      end        
     new_game = input('Do you want to play again?',s)
 end
+      end
+    end
 end
