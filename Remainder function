@@ -1,7 +1,9 @@
 function card_value = convert(Card)
 first = floor((Card/4)+1)
-remainder = Card % 4
-if remainder = 0
-    first - 1
+remainder = mod(Card, 4)
+if remainder == 0
+    first = first - 1
 end
+first
+card_value = first 
 end
