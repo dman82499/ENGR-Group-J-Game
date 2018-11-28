@@ -1,0 +1,104 @@
+load CardDeck
+figure('WindowStyle','docked')
+disp('Welcome to Blackjack! You are currently playing against the MATLAB dealer')
+disp('There is a dealer and a player')
+disp('There are 52 cards in the deck')
+disp('Aces may be counted as either 1 or 11 points')
+disp('Cards 2-10 are scored as their numerical value')
+disp('All face cards are counted as 10 points')
+disp('Value of a hand is the sum of the point values of the cards')
+disp('The goal of the game is to reach 21 points without exceeding 21') 
+disp('If you exceed 21 player loses and dealer wins') 
+disp('If you get 21 points across the first card, you win instantly unless the dealer also gets the same (called a blackjack)')
+disp('When the player or the dealer reaches exactly 21 points, the game ends.')
+
+
+money = 10
+
+Player1 = input('What is your name?: ','s');
+new_game = 'y';
+while new_game == 'y'
+    bet = input('\n[Dealer]: How many MATLAB coins would you want to bet? \n(please type a positive integer, greater than 0):');
+    money = money - bet;
+    fprintf('you have %2.0f coins left',money)
+    dealer_total = 0
+    player_total = 0
+
+%initilizing card variables
+    
+    ShuffledDeck = randperm(52);
+    dealer_total = 0;
+    player_total = 0;
+    next_face_up = 5;
+    stand = 0
+    Player_Cards = ShuffledDeck(1:2)
+    Dealer_Cards = ShuffledDeck(3:4)
+    subplot(2,1,2);
+    imshow([BlueDeck{Player_Cards}])
+    subplot(2,1,1); 
+    imshow([BlueDeck{[Dealer_Cards(1),55]}])
+    player_total = convert(Player_Cards(1)) + convert(Player_Cards(2))
+    dealer_total = convert(Dealer_Cards(1));
+    
+    %convert to card value
+    fprintf('You have %3.0f total, while the dealer has %3.0f\n', player_total, dealer_total)
+    while player_total < 21 & dealer_total < 21      
+        question = input('\nWould you like to hit or stay?\n(type h or s)','s');
+      if question == 'h'
+            Player_Cards = [Player_Cards, ShuffledDeck(next_face_up)] 
+            next_face_up = next_face_up + 1
+            array_num = 3
+            subplot(2,1,2);
+            imshow([BlueDeck{Player_Cards}])
+            player_total = player_total + convert(Player_Cards(array_num))
+            array_sum = array_num + 1 
+            fprintf('You have %3.0f total, while the dealer has %3.0f', player_total, dealer_total)
+            stand = 1
+            
+      end
+      if question == 's'
+          dealer_total = convert(Dealer_Cards(1)) + convert(Dealer_Cards(2));
+        while dealer_total < 17
+            Dealer_Cards = [Dealer_Cards, ShuffledDeck(next_face_up)]
+            next_face_up = next_face_up + 1
+            subplot(2,1,1)
+            imshow([BlueDeck{Dealer_Cards}])
+            dealer_total = dealer_total + convert(Dealer_Cards(next_face_up-3));
+            fprintf('The dealer has %3.0f', dealer_total)
+        end
+      end
+      
+    end
+    if stand == 1
+        subplot(2,1,1)
+        imshow([BlueDeck{Dealer_Cards}])
+        dealer_total = dealer_total + convert(Dealer_Cards(2));
+        fprintf('You have %3.0f\n', player_total)
+        fprintf('the Dealer has %3.0f', dealer_total)
+    end
+        
+    if dealer_total == 21 | player_total == 21
+        if dealer_total == 21 & player_total == 21
+            disp('Draw!')
+    elseif dealer_total == 21 & player_total ~= 21
+        fprintf('\nThe Dealer wins!')    
+    elseif player_total == 21 & dealer_total ~= 21
+            fprintf('\nYou Win!')
+            
+        end
+    end
+    if player_total > 21 & dealer_total < 21
+        fprintf('\nThe Dealer Wins!')
+    end
+    if dealer_total > 21 & player_total < 21
+        fprintf('\nYou Win!')
+    end
+    if player_total > dealer_total & player_total < 21
+        fprintf('\nYou Win!')
+    end
+    if dealer_total > player_total & dealer_total < 21
+        fprintf('\nThe Dealer Wins!')
+    end        
+    new_game = input('\nDo you want to play again?\n(Type "y" or "n"):','s');
+    
+end
